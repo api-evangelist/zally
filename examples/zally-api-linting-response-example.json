@@ -1,0 +1,8 @@
+{
+  "violations": [
+    {}
+  ],
+  "message": "Example description for this resource.",
+  "violations_count": "example-value",
+  "api_definition": "example-value"
+}

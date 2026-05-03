@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/zally-api-rule-structure.json",
+  "name": "Rule",
+  "description": "Rule",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Rule title",
+      "example": "Do Not Use URI Versioning"
+    },
+    "code": {
+      "type": "string",
+      "description": "Rule id",
+      "example": "115"
+    },
+    "type": {
+      "$ref": "#/components/schemas/RuleType"
+    },
+    "url": {
+      "type": "string",
+      "description": "Link to the rule's description",
+      "example": "https://zalando.github.io/restful-api-guidelines/compatibility/Compatibility.html#must-do-not-use-uri-versioning"
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Shows whether the rule is activated",
+      "example": true
+    }
+  },
+  "required": [
+    "title",
+    "code",
+    "type",
+    "url",
+    "is_active"
+  ]
+}

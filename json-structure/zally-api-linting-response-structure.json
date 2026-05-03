@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/zally-api-linting-response-structure.json",
+  "name": "LintingResponse",
+  "description": "Linting Response",
+  "type": "object",
+  "properties": {
+    "violations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Violation"
+      },
+      "description": "List of violations",
+      "example": [
+        {}
+      ]
+    },
+    "message": {
+      "type": "string",
+      "description": "Custom server message",
+      "example": "Example description for this resource."
+    },
+    "violations_count": {
+      "$ref": "#/components/schemas/ViolationsCount"
+    },
+    "api_definition": {
+      "type": "string",
+      "description": "Specification object in OpenAPI format",
+      "example": "example-value"
+    }
+  },
+  "required": [
+    "violations",
+    "violations_count"
+  ]
+}

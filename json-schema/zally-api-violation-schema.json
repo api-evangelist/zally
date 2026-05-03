@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Violation",
+  "description": "Violation Object",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-schema/zally-api-violation-schema.json",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Violation title",
+      "example": "Example Name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Violation text",
+      "example": "Example description for this resource."
+    },
+    "violation_type": {
+      "$ref": "#/components/schemas/RuleType"
+    },
+    "rule_link": {
+      "type": "string",
+      "description": "Violated rule URL",
+      "example": "https://example.com/path/abc123"
+    },
+    "paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Violated paths",
+      "example": [
+        "/var/example/abc.log"
+      ]
+    },
+    "pointer": {
+      "type": "string",
+      "description": "JsonPointer to the violated path in the specification",
+      "example": "example-value"
+    },
+    "start_line": {
+      "type": "integer",
+      "format": "int32",
+      "example": 1,
+      "description": "The line starting the violated location, if known"
+    },
+    "end_line": {
+      "type": "integer",
+      "format": "int32",
+      "example": 5,
+      "description": "The line ending the violated location, if known"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "violation_type",
+    "paths"
+  ]
+}

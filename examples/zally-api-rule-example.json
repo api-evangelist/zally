@@ -1,0 +1,7 @@
+{
+  "title": "Do Not Use URI Versioning",
+  "code": "115",
+  "type": "example-value",
+  "url": "https://zalando.github.io/restful-api-guidelines/compatibility/Compatibility.html#must-do-not-use-uri-versioning",
+  "is_active": true
+}

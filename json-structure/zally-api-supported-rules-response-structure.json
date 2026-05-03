@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/zally-api-supported-rules-response-structure.json",
+  "name": "SupportedRulesResponse",
+  "description": "Supported Rules",
+  "type": "object",
+  "properties": {
+    "supported_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Rule"
+      },
+      "example": [
+        {}
+      ]
+    }
+  },
+  "required": [
+    "supported_rules"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/zally-api-review-statistics-response-structure.json",
+  "name": "ReviewStatisticsResponse",
+  "description": "Linting results and review statistics for a given interval in time",
+  "type": "object",
+  "properties": {
+    "total_reviews": {
+      "type": "int32",
+      "example": 23,
+      "description": "Total number of lintings"
+    },
+    "total_reviews_deduplicated": {
+      "type": "int32",
+      "example": 12,
+      "description": "Unique APIs linted"
+    },
+    "successful_reviews": {
+      "type": "int32",
+      "example": 17,
+      "description": "Number of successful lintings"
+    },
+    "number_of_endpoints": {
+      "type": "int32",
+      "example": 10,
+      "description": "Number of endpoints in the linted APIs"
+    },
+    "must_violations": {
+      "type": "int32",
+      "example": 123,
+      "description": "Number of MUST violations"
+    },
+    "should_violations": {
+      "type": "int32",
+      "example": 81,
+      "description": "Number of SHOULD violations"
+    },
+    "may_violations": {
+      "type": "int32",
+      "example": 32,
+      "description": "Number of MAY violations"
+    },
+    "hint_violations": {
+      "type": "int32",
+      "example": 5,
+      "description": "Number of HINTS"
+    }
+  },
+  "required": [
+    "total_reviews",
+    "total_reviews_deduplicated",
+    "successful_reviews",
+    "number_of_endpoints",
+    "must_violations",
+    "should_violations",
+    "may_violations",
+    "hint_violations"
+  ]
+}

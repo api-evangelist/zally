@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuleType",
+  "description": "Rule type / severity",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-schema/zally-api-rule-type-schema.json",
+  "type": "string"
+}

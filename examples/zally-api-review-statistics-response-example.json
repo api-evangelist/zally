@@ -1,0 +1,10 @@
+{
+  "total_reviews": 23,
+  "total_reviews_deduplicated": 12,
+  "successful_reviews": 17,
+  "number_of_endpoints": 10,
+  "must_violations": 123,
+  "should_violations": 81,
+  "may_violations": 32,
+  "hint_violations": 5
+}

@@ -1,0 +1,8 @@
+{
+  "api_definition": {},
+  "api_definition_string": "example-value",
+  "api_definition_url": "https://example.com/path/abc123",
+  "ignore_rules": [
+    "example-value"
+  ]
+}

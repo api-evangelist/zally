@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/zally-api-violations-count-structure.json",
+  "name": "ViolationsCount",
+  "description": "Violation Count",
+  "type": "object",
+  "properties": {
+    "must": {
+      "type": "int32",
+      "example": 100
+    },
+    "should": {
+      "type": "int32",
+      "example": 100
+    },
+    "may": {
+      "type": "int32",
+      "example": 100
+    },
+    "could": {
+      "type": "int32",
+      "example": 100
+    },
+    "hint": {
+      "type": "int32",
+      "example": 100
+    }
+  },
+  "required": [
+    "must",
+    "should",
+    "may",
+    "could",
+    "hint"
+  ]
+}

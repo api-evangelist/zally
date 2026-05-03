@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ViolationsCount",
+  "description": "Violation Count",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-schema/zally-api-violations-count-schema.json",
+  "type": "object",
+  "properties": {
+    "must": {
+      "type": "integer",
+      "format": "int32",
+      "example": 100
+    },
+    "should": {
+      "type": "integer",
+      "format": "int32",
+      "example": 100
+    },
+    "may": {
+      "type": "integer",
+      "format": "int32",
+      "example": 100
+    },
+    "could": {
+      "type": "integer",
+      "format": "int32",
+      "example": 100
+    },
+    "hint": {
+      "type": "integer",
+      "format": "int32",
+      "example": 100
+    }
+  },
+  "required": [
+    "must",
+    "should",
+    "may",
+    "could",
+    "hint"
+  ]
+}

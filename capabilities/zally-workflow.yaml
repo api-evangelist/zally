@@ -1,0 +1,68 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Zally Workflow
+  description: Unified workflow capability composing Zally APIs.
+  tags:
+    - Zally
+  created: '2026-05-03'
+  modified: '2026-05-03'
+capability:
+  consumes:
+    - import: api
+      location: ./shared/api.yaml
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: zally-api
+      description: Unified REST API for Zally
+      resources:
+        - path: /v1/api
+          name: api
+          description: Operations for api
+          operations:
+            - method: POST
+              name: post-api-violations
+              description: Zally API Violations
+              call: api.post-api-violations
+            - method: GET
+              name: get-api-violationsexternal-id
+              description: Zally Get Previous Generated Validation Result
+              call: api.get-api-violationsexternal-id
+            - method: GET
+              name: get-supported-rules
+              description: Zally Suported Rules
+              call: api.get-supported-rules
+            - method: GET
+              name: get-review-statistics
+              description: Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.
+              call: api.get-review-statistics
+    - type: mcp
+      port: 9090
+      namespace: zally-mcp
+      transport: http
+      description: MCP server for Zally
+      tools:
+        - name: api-post-api-violations
+          description: Zally API Violations
+          hints:
+            readOnly: false
+            openWorld: true
+          call: api.post-api-violations
+        - name: api-get-api-violationsexternal-id
+          description: Zally Get Previous Generated Validation Result
+          hints:
+            readOnly: true
+            openWorld: true
+          call: api.get-api-violationsexternal-id
+        - name: api-get-supported-rules
+          description: Zally Suported Rules
+          hints:
+            readOnly: true
+            openWorld: true
+          call: api.get-supported-rules
+        - name: api-get-review-statistics
+          description: Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: api.get-review-statistics

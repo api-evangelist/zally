@@ -1,0 +1,76 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Zally - Zalando's API Linter
+  description: Zally is a quality assurance tool. It's main purpose is to check the complience of
+  tags:
+    - Zally
+  created: '2026-05-03'
+  modified: '2026-05-03'
+capability:
+  consumes:
+    - type: http
+      namespace: api
+      baseUri: "https://zally.on.inter.net"
+      description: Zally is a quality assurance tool. It's main purpose is to check the complience of
+      resources:
+        - name: api
+          path: /
+          description: Zally is a quality assurance tool. It's main purpose is to check the complience of
+          operations:
+            - name: post-api-violations
+              method: POST
+              path: '/api-violations'
+              description: Zally API Violations
+              inputParameters: []
+              outputRawFormat: json
+            - name: get-api-violationsexternal-id
+              method: GET
+              path: '/api-violations/{externalId}'
+              description: Zally Get Previous Generated Validation Result
+              inputParameters:
+                - name: param
+                  in: query
+                  type: string
+                  required: false
+                  description: ''
+              outputRawFormat: json
+            - name: get-supported-rules
+              method: GET
+              path: '/supported-rules'
+              description: Zally Suported Rules
+              inputParameters:
+                - name: param
+                  in: query
+                  type: string
+                  required: false
+                  description: ''
+                - name: param
+                  in: query
+                  type: string
+                  required: false
+                  description: ''
+              outputRawFormat: json
+            - name: get-review-statistics
+              method: GET
+              path: '/review-statistics'
+              description: Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.
+              inputParameters:
+                - name: param
+                  in: query
+                  type: string
+                  required: false
+                  description: ''
+                - name: param
+                  in: query
+                  type: string
+                  required: false
+                  description: ''
+                - name: param
+                  in: query
+                  type: string
+                  required: false
+                  description: ''
+              outputRawFormat: json
+      authentication:
+        type: bearer
+        token: '{{TOKEN}}'

@@ -1,0 +1,12 @@
+{
+  "title": "Example Name",
+  "description": "Example description for this resource.",
+  "violation_type": "example-value",
+  "rule_link": "https://example.com/path/abc123",
+  "paths": [
+    "/var/example/abc.log"
+  ],
+  "pointer": "example-value",
+  "start_line": 1,
+  "end_line": 5
+}

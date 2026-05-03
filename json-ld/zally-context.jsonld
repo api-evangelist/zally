@@ -1,0 +1,139 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "zally": "https://zally.example.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "LintingRequest": "zally:LintingRequest",
+    "LintingResponse": "zally:LintingResponse",
+    "ReviewStatisticsResponse": "zally:ReviewStatisticsResponse",
+    "Rule": "zally:Rule",
+    "SupportedRulesResponse": "zally:SupportedRulesResponse",
+    "Violation": "zally:Violation",
+    "ViolationsCount": "zally:ViolationsCount",
+    "apiDefinition": {
+      "@id": "zally:api_definition",
+      "@type": "xsd:string"
+    },
+    "apiDefinitionString": {
+      "@id": "zally:api_definition_string",
+      "@type": "xsd:string"
+    },
+    "apiDefinitionUrl": {
+      "@id": "zally:api_definition_url",
+      "@type": "xsd:string"
+    },
+    "ignoreRules": {
+      "@id": "zally:ignore_rules",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "violations": {
+      "@id": "zally:violations",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "message": {
+      "@id": "zally:message",
+      "@type": "xsd:string"
+    },
+    "violationsCount": {
+      "@id": "zally:violations_count",
+      "@type": "@id"
+    },
+    "totalReviews": {
+      "@id": "zally:total_reviews",
+      "@type": "xsd:integer"
+    },
+    "totalReviewsDeduplicated": {
+      "@id": "zally:total_reviews_deduplicated",
+      "@type": "xsd:integer"
+    },
+    "successfulReviews": {
+      "@id": "zally:successful_reviews",
+      "@type": "xsd:integer"
+    },
+    "numberOfEndpoints": {
+      "@id": "zally:number_of_endpoints",
+      "@type": "xsd:integer"
+    },
+    "mustViolations": {
+      "@id": "zally:must_violations",
+      "@type": "xsd:integer"
+    },
+    "shouldViolations": {
+      "@id": "zally:should_violations",
+      "@type": "xsd:integer"
+    },
+    "mayViolations": {
+      "@id": "zally:may_violations",
+      "@type": "xsd:integer"
+    },
+    "hintViolations": {
+      "@id": "zally:hint_violations",
+      "@type": "xsd:integer"
+    },
+    "title": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "code": {
+      "@id": "zally:code",
+      "@type": "xsd:string"
+    },
+    "isActive": {
+      "@id": "zally:is_active",
+      "@type": "xsd:boolean"
+    },
+    "paths": {
+      "@id": "zally:paths",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "pointer": {
+      "@id": "zally:pointer",
+      "@type": "xsd:string"
+    },
+    "startLine": {
+      "@id": "zally:start_line",
+      "@type": "xsd:integer"
+    },
+    "endLine": {
+      "@id": "zally:end_line",
+      "@type": "xsd:integer"
+    },
+    "must": {
+      "@id": "zally:must",
+      "@type": "xsd:integer"
+    },
+    "should": {
+      "@id": "zally:should",
+      "@type": "xsd:integer"
+    },
+    "may": {
+      "@id": "zally:may",
+      "@type": "xsd:integer"
+    },
+    "could": {
+      "@id": "zally:could",
+      "@type": "xsd:integer"
+    },
+    "hint": {
+      "@id": "zally:hint",
+      "@type": "xsd:integer"
+    },
+    "supportedRules": {
+      "@id": "zally:supported_rules",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "ruleLink": {
+      "@id": "zally:rule_link",
+      "@type": "xsd:string"
+    },
+    "violationType": {
+      "@id": "zally:violation_type",
+      "@type": "@id"
+    }
+  }
+}

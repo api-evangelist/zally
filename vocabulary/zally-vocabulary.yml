@@ -1,0 +1,52 @@
+vocabulary: 1.0.0
+info:
+  provider: Zally
+  description: Vocabulary for Zally APIs.
+  created: '2026-05-03'
+  modified: '2026-05-03'
+operational:
+  apis:
+    - name: Zally - Zalando's API Linter
+      namespace: zally---zalandos-api-linter
+      version: 2.3.0
+      baseUrl: "https://zally.on.inter.net"
+      status: active
+  resources:
+    - name: api-violations
+      methods:
+        - get
+        - post
+    - name: supported-rules
+      methods:
+        - get
+    - name: review-statistics
+      methods:
+        - get
+  actions:
+    - verb: post
+      methods:
+        - POST
+    - verb: get
+      methods:
+        - GET
+  schemas:
+    core:
+      - LintingRequest
+      - LintingResponse
+      - ReviewStatisticsResponse
+      - Rule
+      - RuleType
+      - SupportedRulesResponse
+      - Violation
+      - ViolationsCount
+capability:
+  workflows:
+    - name: Zally Workflow
+      file: capabilities/zally-workflow.yaml
+      description: Unified workflow for Zally
+      apis:
+        - zally---zalandos-api-linter
+  personas:
+    - id: developer
+      name: Developer
+      description: Integrates with Zally APIs
