@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Zally - Zalando's API Linter
+  description: Zally is a quality assurance tool. It's main purpose is to check the complience of API specifications to a
+    specific set of API design rules. The service is able to lint the API specification in OpenAPI format. The result of the
+    linting is a set of Violations. A violation contains information about the violated rule, its severity, and path of the
+    violation in the specification document. The API also provides a result and statistics endpoint. It contains aggregated
+    statics like the number of linting requests and the number of checked endpoints. Additionally, all linting results and
+    the linted AP
+  tags:
+  - Zally
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: zally
+    baseUri: https://zally.on.inter.net
+    description: Zally - Zalando's API Linter HTTP API.
+    authentication:
+      type: bearer
+      token: '{{ZALLY_TOKEN}}'
+    resources:
+    - name: api-violations
+      path: /api-violations
+      operations:
+      - name: post-api-violations
+        method: POST
+        description: Zally API Violations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-violations-externalid
+      path: /api-violations/{externalId}
+      operations:
+      - name: get-api-violations-externalid
+        method: GET
+        description: Zally Get Previous Generated Validation Result
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: supported-rules
+      path: /supported-rules
+      operations:
+      - name: get-supported-rules
+        method: GET
+        description: Zally Suported Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: review-statistics
+      path: /review-statistics
+      operations:
+      - name: get-review-statistics
+        method: GET
+        description: Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: zally-rest
+    description: REST adapter for Zally - Zalando's API Linter.
+    resources:
+    - path: /api-violations
+      name: post-api-violations
+      operations:
+      - method: POST
+        name: post-api-violations
+        description: Zally API Violations
+        call: zally.post-api-violations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api-violations/{externalId}
+      name: get-api-violations-externalid
+      operations:
+      - method: GET
+        name: get-api-violations-externalid
+        description: Zally Get Previous Generated Validation Result
+        call: zally.get-api-violations-externalid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /supported-rules
+      name: get-supported-rules
+      operations:
+      - method: GET
+        name: get-supported-rules
+        description: Zally Suported Rules
+        call: zally.get-supported-rules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /review-statistics
+      name: get-review-statistics
+      operations:
+      - method: GET
+        name: get-review-statistics
+        description: Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.
+        call: zally.get-review-statistics
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: zally-mcp
+    transport: http
+    description: MCP adapter for Zally - Zalando's API Linter for AI agent use.
+    tools:
+    - name: post-api-violations
+      description: Zally API Violations
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: zally.post-api-violations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-api-violations-externalid
+      description: Zally Get Previous Generated Validation Result
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zally.get-api-violations-externalid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-supported-rules
+      description: Zally Suported Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zally.get-supported-rules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-review-statistics
+      description: Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: zally.get-review-statistics
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    ZALLY_TOKEN: ZALLY_TOKEN
