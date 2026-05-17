@@ -46,7 +46,7 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-schema/
       - type: JSONStructure
         url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/
-      - type: JSON-LD
+      - type: JSONLD
         url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-ld/zally-context.jsonld
       - type: Example
         url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
