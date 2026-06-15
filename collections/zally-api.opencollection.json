@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zally - Zalando's API Linter",
+    "version": "2.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Zally API Violations",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://zally.on.inter.net/api-violations",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "The API Violations endpoint validates given Swagger Specification\nagainst the rules defined in *Zalando* RESTful API Guidelines\n(http://zalando.github.io/restful-api-guidelines/).\n\nA successful response includes the list of violations grouped by\nthe API Guidelines rules.\n\nIf an api definition is supplied via url then any non-successful\nresponses from that will be passed on. For example you may be\nusing Zally without authentication but supply a password\nprotected url and still get a `401 Unauthor"
+    },
+    {
+      "info": {
+        "name": "Zally Get Previous Generated Validation Result",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://zally.on.inter.net/api-violations/:externalId",
+        "params": [
+          {
+            "name": "externalId",
+            "value": "",
+            "type": "path",
+            "description": "Identifier of a previous validation result"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Retreive a previous validation result in the same format as when\nit was originally processed.\n\nIf the idenfied validation result cannot be found then a\n`404 Not Found` response is returned.\n"
+    },
+    {
+      "info": {
+        "name": "Zally Suported Rules",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://zally.on.inter.net/supported-rules",
+        "params": [
+          {
+            "name": "type",
+            "value": "",
+            "type": "query",
+            "description": "Rules Type"
+          },
+          {
+            "name": "is_active",
+            "value": "",
+            "type": "query",
+            "description": "Is Rule Active"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Returns a list of rules which are supported by a current Zally\ninstallation.\n"
+    },
+    {
+      "info": {
+        "name": "Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://zally.on.inter.net/review-statistics",
+        "params": [
+          {
+            "name": "from",
+            "value": "",
+            "type": "query",
+            "description": "All review statistics from this day"
+          },
+          {
+            "name": "to",
+            "value": "",
+            "type": "query",
+            "description": "All review statistics until this day, only works in conjunction with from parameter"
+          },
+          {
+            "name": "user_agent",
+            "value": "",
+            "type": "query",
+            "description": "Review statistics requested with the specified User-Agent"
+          }
+        ],
+        "auth": {
+          "type": "bearer",
+          "token": "{{bearerToken}}"
+        }
+      },
+      "docs": "Returns a list of all linting results and review statistics for a given\ninterval in time. If none of the query parameters is supplied, a list of\nall linting results and review statistics for the last week is returned.\n"
+    }
+  ],
+  "bundled": true
+}
