@@ -45,7 +45,7 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/
       - type: JSONLD
         url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-ld/zally-context.jsonld
-      - type: Example
+      - type: Examples
         url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
 common:
   - type: Website
@@ -72,7 +72,7 @@ common:
   - type: CLI
     url: https://github.com/zalando/zally/tree/main/cli
     name: Zally CLI
-  - type: SDK
+  - type: SDKs
     url: https://github.com/zalando/zally/tree/main/web-ui
     name: Zally Web UI
   - type: Specification
