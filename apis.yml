@@ -48,6 +48,10 @@ apis:
       - type: Examples
         url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
 common:
+  - type: DomainSecurity
+    url: security/zally-domain-security.yml
+  - type: Authentication
+    url: authentication/zally-authentication.yml
   - type: Website
     url: https://opensource.zalando.com/zally/
     name: Zally Project Website
