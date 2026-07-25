@@ -1,0 +1,170 @@
+openapi: 3.0.3
+info:
+  title: Zally - Zalando's API Linter Api Violations Supported Rules API
+  description: 'Zally is a quality assurance tool. It''s main purpose is to check the complience of
+
+    API specifications to a specific set of API design rules.
+
+
+    The service is able to lint the API specification in OpenAPI format. The result of
+
+    the linting is a set of Violations. A violation contains information about the violated
+
+    rule, its severity, and path of the violation in the specification document.
+
+
+    The API also provides a result and statistics endpoint. It contains aggregated statics like
+
+    the number of linting requests and the number of checked endpoints. Additionally, all
+
+    linting results and the linted API specifications can be retrieved.
+
+    '
+  version: 2.3.0
+  x-api-id: 48aa0090-25ef-11e8-b467-0ed5f89f718b
+  x-audience: company-internal
+  contact:
+    name: Team API Management
+    email: team-api-management@zalando.de
+    url: http://tech.zalando.de
+servers:
+- url: https://zally.on.inter.net
+  description: Production Zally Web UI instance
+tags:
+- name: Supported Rules
+paths:
+  /supported-rules:
+    get:
+      summary: Zally Suported Rules
+      description: 'Returns a list of rules which are supported by a current Zally
+
+        installation.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/RulesType'
+      - $ref: '#/components/parameters/IsActive'
+      responses:
+        200:
+          description: List of supported rules is successfully returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportedRulesResponse'
+              examples:
+                Get_supported_rules200Example:
+                  summary: Default get_supported_rules 200 response
+                  x-microcks-default: true
+                  value:
+                    supported_rules:
+                    - {}
+        400:
+          description: One of the query parameters is incorrect
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://opensource.zalando.com/problem/schema.yaml#/Problem
+              examples:
+                Get_supported_rules400Example:
+                  summary: Default get_supported_rules 400 response
+                  x-microcks-default: true
+                  value: example-value
+        default:
+          description: Error object
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://opensource.zalando.com/problem/schema.yaml#/Problem
+              examples:
+                Get_supported_rulesdefaultExample:
+                  summary: Default get_supported_rules default response
+                  x-microcks-default: true
+                  value: example-value
+      security:
+      - BearerAuth:
+        - uid
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Supported Rules
+components:
+  schemas:
+    Rule:
+      type: object
+      description: Rule
+      required:
+      - title
+      - code
+      - type
+      - url
+      - is_active
+      properties:
+        title:
+          type: string
+          description: Rule title
+          example: Do Not Use URI Versioning
+        code:
+          type: string
+          description: Rule id
+          example: '115'
+        type:
+          $ref: '#/components/schemas/RuleType'
+        url:
+          type: string
+          description: Link to the rule's description
+          example: https://zalando.github.io/restful-api-guidelines/compatibility/Compatibility.html#must-do-not-use-uri-versioning
+        is_active:
+          type: boolean
+          description: Shows whether the rule is activated
+          example: true
+    RuleType:
+      type: string
+      x-extensible-enum:
+      - MUST
+      - SHOULD
+      - COULD
+      - MAY
+      - HINT
+      description: Rule type / severity
+    SupportedRulesResponse:
+      type: object
+      description: Supported Rules
+      required:
+      - supported_rules
+      properties:
+        supported_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+          example:
+          - {}
+  parameters:
+    RulesType:
+      name: type
+      in: query
+      description: Rules Type
+      required: false
+      schema:
+        type: string
+        x-extensible-enum:
+        - MUST
+        - SHOULD
+        - COULD
+        - MAY
+        - HINT
+    IsActive:
+      name: is_active
+      in: query
+      description: Is Rule Active
+      required: false
+      schema:
+        type: boolean
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Open Source project's page
+  url: https://opensource.zalando.com/zally/

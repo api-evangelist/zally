@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: Zally - Zalando's API Linter Api Violations Review Statistics API
+  description: 'Zally is a quality assurance tool. It''s main purpose is to check the complience of
+
+    API specifications to a specific set of API design rules.
+
+
+    The service is able to lint the API specification in OpenAPI format. The result of
+
+    the linting is a set of Violations. A violation contains information about the violated
+
+    rule, its severity, and path of the violation in the specification document.
+
+
+    The API also provides a result and statistics endpoint. It contains aggregated statics like
+
+    the number of linting requests and the number of checked endpoints. Additionally, all
+
+    linting results and the linted API specifications can be retrieved.
+
+    '
+  version: 2.3.0
+  x-api-id: 48aa0090-25ef-11e8-b467-0ed5f89f718b
+  x-audience: company-internal
+  contact:
+    name: Team API Management
+    email: team-api-management@zalando.de
+    url: http://tech.zalando.de
+servers:
+- url: https://zally.on.inter.net
+  description: Production Zally Web UI instance
+tags:
+- name: Review Statistics
+paths:
+  /review-statistics:
+    get:
+      summary: Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.
+      description: 'Returns a list of all linting results and review statistics for a given
+
+        interval in time. If none of the query parameters is supplied, a list of
+
+        all linting results and review statistics for the last week is returned.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/From'
+      - $ref: '#/components/parameters/To'
+      - $ref: '#/components/parameters/UserAgent'
+      responses:
+        200:
+          description: List of queried review statistics
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ReviewStatisticsResponse'
+              examples:
+                Get_review_statistics200Example:
+                  summary: Default get_review_statistics 200 response
+                  x-microcks-default: true
+                  value:
+                    total_reviews: 23
+                    total_reviews_deduplicated: 12
+                    successful_reviews: 17
+                    number_of_endpoints: 10
+                    must_violations: 123
+                    should_violations: 81
+                    may_violations: 32
+                    hint_violations: 5
+        400:
+          description: One of the query parameters is incorrect
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://opensource.zalando.com/problem/schema.yaml#/Problem
+              examples:
+                Get_review_statistics400Example:
+                  summary: Default get_review_statistics 400 response
+                  x-microcks-default: true
+                  value: example-value
+        default:
+          description: Error object
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://opensource.zalando.com/problem/schema.yaml#/Problem
+              examples:
+                Get_review_statisticsdefaultExample:
+                  summary: Default get_review_statistics default response
+                  x-microcks-default: true
+                  value: example-value
+      security:
+      - BearerAuth:
+        - uid
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Review Statistics
+components:
+  schemas:
+    ReviewStatisticsResponse:
+      type: object
+      description: Linting results and review statistics for a given interval in time
+      required:
+      - total_reviews
+      - total_reviews_deduplicated
+      - successful_reviews
+      - number_of_endpoints
+      - must_violations
+      - should_violations
+      - may_violations
+      - hint_violations
+      properties:
+        total_reviews:
+          type: integer
+          format: int32
+          example: 23
+          description: Total number of lintings
+        total_reviews_deduplicated:
+          type: integer
+          format: int32
+          example: 12
+          description: Unique APIs linted
+        successful_reviews:
+          type: integer
+          format: int32
+          example: 17
+          description: Number of successful lintings
+        number_of_endpoints:
+          type: integer
+          format: int32
+          example: 10
+          description: Number of endpoints in the linted APIs
+        must_violations:
+          type: integer
+          format: int32
+          example: 123
+          description: Number of MUST violations
+        should_violations:
+          type: integer
+          format: int32
+          example: 81
+          description: Number of SHOULD violations
+        may_violations:
+          type: integer
+          format: int32
+          example: 32
+          description: Number of MAY violations
+        hint_violations:
+          type: integer
+          format: int32
+          example: 5
+          description: Number of HINTS
+  parameters:
+    UserAgent:
+      name: user_agent
+      in: query
+      description: Review statistics requested with the specified User-Agent
+      required: false
+      schema:
+        type: string
+    To:
+      name: to
+      in: query
+      description: All review statistics until this day, only works in conjunction with from parameter
+      required: false
+      schema:
+        type: string
+        format: date
+    From:
+      name: from
+      in: query
+      description: All review statistics from this day
+      required: false
+      schema:
+        type: string
+        format: date
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Open Source project's page
+  url: https://opensource.zalando.com/zally/

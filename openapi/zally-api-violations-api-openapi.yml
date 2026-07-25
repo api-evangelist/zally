@@ -1,0 +1,352 @@
+openapi: 3.0.3
+info:
+  title: Zally - Zalando's API Linter Api Violations API
+  description: 'Zally is a quality assurance tool. It''s main purpose is to check the complience of
+
+    API specifications to a specific set of API design rules.
+
+
+    The service is able to lint the API specification in OpenAPI format. The result of
+
+    the linting is a set of Violations. A violation contains information about the violated
+
+    rule, its severity, and path of the violation in the specification document.
+
+
+    The API also provides a result and statistics endpoint. It contains aggregated statics like
+
+    the number of linting requests and the number of checked endpoints. Additionally, all
+
+    linting results and the linted API specifications can be retrieved.
+
+    '
+  version: 2.3.0
+  x-api-id: 48aa0090-25ef-11e8-b467-0ed5f89f718b
+  x-audience: company-internal
+  contact:
+    name: Team API Management
+    email: team-api-management@zalando.de
+    url: http://tech.zalando.de
+servers:
+- url: https://zally.on.inter.net
+  description: Production Zally Web UI instance
+tags:
+- name: Api Violations
+paths:
+  /api-violations:
+    post:
+      summary: Zally API Violations
+      description: 'The API Violations endpoint validates given Swagger Specification
+
+        against the rules defined in *Zalando* RESTful API Guidelines
+
+        (http://zalando.github.io/restful-api-guidelines/).
+
+
+        A successful response includes the list of violations grouped by
+
+        the API Guidelines rules.
+
+
+        If an api definition is supplied via url then any non-successful
+
+        responses from that will be passed on. For example you may be
+
+        using Zally without authentication but supply a password
+
+        protected url and still get a `401 Unauthorized` response.
+
+        '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LintingRequest'
+            examples:
+              Post_api_violationsRequestExample:
+                summary: Default post_api_violations request
+                x-microcks-default: true
+                value:
+                  api_definition: {}
+                  api_definition_string: example-value
+                  api_definition_url: https://example.com/path/abc123
+                  ignore_rules:
+                  - example-value
+      responses:
+        200:
+          description: API swagger is OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LintingResponse'
+              examples:
+                Post_api_violations200Example:
+                  summary: Default post_api_violations 200 response
+                  x-microcks-default: true
+                  value:
+                    violations:
+                    - {}
+                    message: Example description for this resource.
+                    violations_count:
+                      must: {}
+                      should: {}
+                      may: {}
+                      could: {}
+                      hint: {}
+                    api_definition: example-value
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+              description: The URI where the validation result can be rerequested.
+        400:
+          description: Input file not parsable
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://opensource.zalando.com/problem/schema.yaml#/Problem
+              examples:
+                Post_api_violations400Example:
+                  summary: Default post_api_violations 400 response
+                  x-microcks-default: true
+                  value: example-value
+        default:
+          description: Error object
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://opensource.zalando.com/problem/schema.yaml#/Problem
+              examples:
+                Post_api_violationsdefaultExample:
+                  summary: Default post_api_violations default response
+                  x-microcks-default: true
+                  value: example-value
+      security:
+      - BearerAuth:
+        - uid
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Api Violations
+  /api-violations/{externalId}:
+    get:
+      summary: Zally Get Previous Generated Validation Result
+      description: 'Retreive a previous validation result in the same format as when
+
+        it was originally processed.
+
+
+        If the idenfied validation result cannot be found then a
+
+        `404 Not Found` response is returned.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/ExternalId'
+      responses:
+        200:
+          description: API swagger is OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LintingResponse'
+              examples:
+                Get_api_violationsexternal_id200Example:
+                  summary: Default get_api_violationsexternal_id 200 response
+                  x-microcks-default: true
+                  value:
+                    violations:
+                    - {}
+                    message: Example description for this resource.
+                    violations_count:
+                      must: {}
+                      should: {}
+                      may: {}
+                      could: {}
+                      hint: {}
+                    api_definition: example-value
+        404:
+          description: No such API review
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://opensource.zalando.com/problem/schema.yaml#/Problem
+              examples:
+                Get_api_violationsexternal_id404Example:
+                  summary: Default get_api_violationsexternal_id 404 response
+                  x-microcks-default: true
+                  value: example-value
+        default:
+          description: Error object
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://opensource.zalando.com/problem/schema.yaml#/Problem
+              examples:
+                Get_api_violationsexternal_iddefaultExample:
+                  summary: Default get_api_violationsexternal_id default response
+                  x-microcks-default: true
+                  value: example-value
+      security:
+      - BearerAuth:
+        - uid
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Api Violations
+components:
+  parameters:
+    ExternalId:
+      name: externalId
+      in: path
+      description: Identifier of a previous validation result
+      required: true
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    RuleType:
+      type: string
+      x-extensible-enum:
+      - MUST
+      - SHOULD
+      - COULD
+      - MAY
+      - HINT
+      description: Rule type / severity
+    LintingResponse:
+      type: object
+      description: Linting Response
+      required:
+      - violations
+      - violations_count
+      properties:
+        violations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Violation'
+          description: List of violations
+          example:
+          - {}
+        message:
+          type: string
+          description: Custom server message
+          example: Example description for this resource.
+        violations_count:
+          $ref: '#/components/schemas/ViolationsCount'
+        api_definition:
+          type: string
+          description: Specification object in OpenAPI format
+          example: example-value
+    Violation:
+      type: object
+      description: Violation Object
+      required:
+      - title
+      - description
+      - violation_type
+      - paths
+      properties:
+        title:
+          type: string
+          description: Violation title
+          example: Example Name
+        description:
+          type: string
+          description: Violation text
+          example: Example description for this resource.
+        violation_type:
+          $ref: '#/components/schemas/RuleType'
+        rule_link:
+          type: string
+          description: Violated rule URL
+          example: https://example.com/path/abc123
+        paths:
+          type: array
+          items:
+            type: string
+          description: Violated paths
+          example:
+          - /var/example/abc.log
+        pointer:
+          type: string
+          description: JsonPointer to the violated path in the specification
+          example: example-value
+        start_line:
+          type: integer
+          format: int32
+          example: 1
+          description: The line starting the violated location, if known
+        end_line:
+          type: integer
+          format: int32
+          example: 5
+          description: The line ending the violated location, if known
+    LintingRequest:
+      type: object
+      description: 'Request containing a swagger definition file. One of the following fields must be provided:
+
+        api_definition, api_definition_string, or api_definition_url.
+
+        '
+      properties:
+        api_definition:
+          type: object
+          description: Specification object in OpenAPI format
+          example: {}
+        api_definition_string:
+          type: string
+          description: Raw API Specification string in OpenAPI format
+          example: example-value
+        api_definition_url:
+          type: string
+          description: Link to the specification in OpenAPI format
+          example: https://example.com/path/abc123
+        ignore_rules:
+          type: array
+          items:
+            type: string
+          description: List of rule ids to be ignored
+          example:
+          - example-value
+    ViolationsCount:
+      type: object
+      description: Violation Count
+      required:
+      - must
+      - should
+      - may
+      - could
+      - hint
+      properties:
+        must:
+          type: integer
+          format: int32
+          example: 100
+        should:
+          type: integer
+          format: int32
+          example: 100
+        may:
+          type: integer
+          format: int32
+          example: 100
+        could:
+          type: integer
+          format: int32
+          example: 100
+        hint:
+          type: integer
+          format: int32
+          example: 100
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+externalDocs:
+  description: Open Source project's page
+  url: https://opensource.zalando.com/zally/
