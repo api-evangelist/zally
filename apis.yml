@@ -5,7 +5,20 @@ description: >-
   rule sets for API design consistency. It exposes a REST API, command-line interface, and web UI for checking API
   designs against Zalando's RESTful API Guidelines or custom rule sets.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zally.png
 tags:
   - API Design
   - API Linting
@@ -18,36 +31,87 @@ created: '2026-03-25'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: zally:zally-api
-    name: Zally API
-    description: >-
-      The Zally REST API performs linting of OpenAPI specifications against configurable rule sets. It returns
-      violations grouped by rule severity (MUST, SHOULD, COULD, MAY, HINT), tracks linting statistics, and lists
-      supported rules. Authentication is via Bearer JWT.
-    humanURL: https://opensource.zalando.com/zally/
-    baseURL: https://zally.on.inter.net
-    tags:
-      - API Linting
-      - API Quality
-      - OpenAPI
-    properties:
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/openapi/zally-api.yml
-      - type: Documentation
-        url: https://opensource.zalando.com/zally/
-      - type: APIReference
-        url: https://github.com/zalando/zally/blob/main/server/zally-server/src/main/resources/api/zally-api.yaml
-      - type: Authentication
-        url: https://github.com/zalando/zally/tree/main/server#authentication
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-schema/
-      - type: JSONStructure
-        url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/
-      - type: JSONLD
-        url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-ld/zally-context.jsonld
-      - type: Examples
-        url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
+- aid: zally:zally-api-violations-api
+  name: Zally Api Violations API
+  description: The Api Violations API from Zally — 2 operation(s) for api violations.
+  humanURL: https://opensource.zalando.com/zally/
+  baseURL: https://zally.on.inter.net
+  tags:
+  - Api Violations
+  properties:
+  - type: OpenAPI
+    url: openapi/zally-api-violations-api-openapi.yml
+  - type: Documentation
+    url: https://opensource.zalando.com/zally/
+  - type: APIReference
+    url: >-
+      https://github.com/zalando/zally/blob/main/server/zally-server/src/main/resources/api/zally-api.yaml
+  - type: Authentication
+    url: https://github.com/zalando/zally/tree/main/server#authentication
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-schema/
+  - type: JSONStructure
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-ld/zally-context.jsonld
+  - type: Examples
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
+- aid: zally:zally-review-statistics-api
+  name: Zally Review Statistics API
+  description: The Review Statistics API from Zally — 1 operation(s) for review statistics.
+  humanURL: https://opensource.zalando.com/zally/
+  baseURL: https://zally.on.inter.net
+  tags:
+  - Review Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/zally-review-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://opensource.zalando.com/zally/
+  - type: APIReference
+    url: >-
+      https://github.com/zalando/zally/blob/main/server/zally-server/src/main/resources/api/zally-api.yaml
+  - type: Authentication
+    url: https://github.com/zalando/zally/tree/main/server#authentication
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-schema/
+  - type: JSONStructure
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-ld/zally-context.jsonld
+  - type: Examples
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
+- aid: zally:zally-supported-rules-api
+  name: Zally Supported Rules API
+  description: The Supported Rules API from Zally — 1 operation(s) for supported rules.
+  humanURL: https://opensource.zalando.com/zally/
+  baseURL: https://zally.on.inter.net
+  tags:
+  - Supported Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/zally-supported-rules-api-openapi.yml
+  - type: Documentation
+    url: https://opensource.zalando.com/zally/
+  - type: APIReference
+    url: >-
+      https://github.com/zalando/zally/blob/main/server/zally-server/src/main/resources/api/zally-api.yaml
+  - type: Authentication
+    url: https://github.com/zalando/zally/tree/main/server#authentication
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-schema/
+  - type: JSONStructure
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-structure/
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/json-ld/zally-context.jsonld
+  - type: Examples
+    url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/zally/overview
   - type: AgenticAccess
     url: agentic-access/zally-agentic-access.yml
   - type: DomainSecurity
