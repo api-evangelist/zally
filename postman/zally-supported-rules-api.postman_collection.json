@@ -1,0 +1,244 @@
+{
+  "info": {
+    "_postman_id": "b49f8d2e-182f-4c7c-97b6-282e6a770009",
+    "name": "Zally - Zalando's API Linter Api Violations Supported Rules API",
+    "description": "Zally is a quality assurance tool. It's main purpose is to check the complience of\nAPI specifications to a specific set of API design rules.\n\nThe service is able to lint the API specification in OpenAPI format. The result of\nthe linting is a set of Violations. A violation contains information about the violated\nrule, its severity, and path of the violation in the specification document.\n\nThe API also provides a result and statistics endpoint. It contains aggregated statics like\nthe number of linting requests and the number of checked endpoints. Additionally, all\nlinting results and the linted API specifications can be retrieved.\n\n\nContact Support:\n Name: Team API Management\n Email: team-api-management@zalando.de",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:36:58.000Z",
+    "updatedAt": "2026-07-28T03:36:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b49f8d2e-182f-4c7c-97b6-282e6a770009"
+  },
+  "item": [
+    {
+      "name": "supported-rules",
+      "item": [
+        {
+          "name": "Zally Suported Rules",
+          "id": "2fa2f2ee-b81d-4dc9-a7c8-48f701d3c7d9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/supported-rules?type=<string>&is_active=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "supported-rules"
+              ],
+              "query": [
+                {
+                  "description": "Rules Type",
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Is Rule Active",
+                  "key": "is_active",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Returns a list of rules which are supported by a current Zally\ninstallation.\n"
+          },
+          "response": [
+            {
+              "id": "50a45c48-d10a-470e-89bf-329a286ebfcf",
+              "name": "List of supported rules is successfully returned",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/supported-rules?type=<string>&is_active=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "supported-rules"
+                  ],
+                  "query": [
+                    {
+                      "description": "Rules Type",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Is Rule Active",
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"supported_rules\": [\n    {\n      \"title\": \"<string>\",\n      \"code\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"is_active\": \"<boolean>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"code\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"is_active\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:36:59.000Z",
+              "updatedAt": "2026-07-28T03:36:59.000Z",
+              "uid": "35240-50a45c48-d10a-470e-89bf-329a286ebfcf"
+            },
+            {
+              "id": "3ddad560-5f00-44b0-9e7a-6c6adb4ba71e",
+              "name": "One of the query parameters is incorrect",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/supported-rules?type=<string>&is_active=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "supported-rules"
+                  ],
+                  "query": [
+                    {
+                      "description": "Rules Type",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Is Rule Active",
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference https://opensource.zalando.com/problem/schema.yaml#/Problem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-07-28T03:36:59.000Z",
+              "updatedAt": "2026-07-28T03:36:59.000Z",
+              "uid": "35240-3ddad560-5f00-44b0-9e7a-6c6adb4ba71e"
+            },
+            {
+              "id": "045afa47-974b-4340-8794-c32026119117",
+              "name": "Error object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/supported-rules?type=<string>&is_active=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "supported-rules"
+                  ],
+                  "query": [
+                    {
+                      "description": "Rules Type",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Is Rule Active",
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference https://opensource.zalando.com/problem/schema.yaml#/Problem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-07-28T03:36:59.000Z",
+              "updatedAt": "2026-07-28T03:36:59.000Z",
+              "uid": "35240-045afa47-974b-4340-8794-c32026119117"
+            }
+          ],
+          "createdAt": "2026-07-28T03:36:59.000Z",
+          "updatedAt": "2026-07-28T03:36:59.000Z",
+          "uid": "35240-2fa2f2ee-b81d-4dc9-a7c8-48f701d3c7d9"
+        }
+      ],
+      "id": "dd35c2a8-7eed-4fb9-a4f8-723086c211c7",
+      "createdAt": "2026-07-28T03:36:59.000Z",
+      "updatedAt": "2026-07-28T03:36:59.000Z",
+      "uid": "35240-dd35c2a8-7eed-4fb9-a4f8-723086c211c7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://zally.on.inter.net"
+    }
+  ]
+}

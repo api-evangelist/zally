@@ -1,0 +1,18 @@
+{
+  "provider": "zally",
+  "sources": [
+    "zally-api-violations-api-openapi.yml",
+    "zally-review-statistics-api-openapi.yml",
+    "zally-supported-rules-api-openapi.yml"
+  ],
+  "outputs": [
+    "zally-api-violations-api-openapi.yml",
+    "zally-review-statistics-api-openapi.yml",
+    "zally-supported-rules-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,264 @@
+{
+  "info": {
+    "_postman_id": "0e77052b-277a-4ea1-963b-14084c406592",
+    "name": "Zally - Zalando's API Linter Api Violations Review Statistics API",
+    "description": "Zally is a quality assurance tool. It's main purpose is to check the complience of\nAPI specifications to a specific set of API design rules.\n\nThe service is able to lint the API specification in OpenAPI format. The result of\nthe linting is a set of Violations. A violation contains information about the violated\nrule, its severity, and path of the violation in the specification document.\n\nThe API also provides a result and statistics endpoint. It contains aggregated statics like\nthe number of linting requests and the number of checked endpoints. Additionally, all\nlinting results and the linted API specifications can be retrieved.\n\n\nContact Support:\n Name: Team API Management\n Email: team-api-management@zalando.de",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:36:57.000Z",
+    "updatedAt": "2026-07-28T03:36:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0e77052b-277a-4ea1-963b-14084c406592"
+  },
+  "item": [
+    {
+      "name": "review-statistics",
+      "item": [
+        {
+          "name": "Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.",
+          "id": "069fad62-4152-4719-87b2-a75bc83e07f0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/problem+json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/review-statistics?from=<date>&to=<date>&user_agent=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "review-statistics"
+              ],
+              "query": [
+                {
+                  "description": "All review statistics from this day",
+                  "key": "from",
+                  "value": "<date>"
+                },
+                {
+                  "description": "All review statistics until this day, only works in conjunction with from parameter",
+                  "key": "to",
+                  "value": "<date>"
+                },
+                {
+                  "description": "Review statistics requested with the specified User-Agent",
+                  "key": "user_agent",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of all linting results and review statistics for a given\ninterval in time. If none of the query parameters is supplied, a list of\nall linting results and review statistics for the last week is returned.\n"
+          },
+          "response": [
+            {
+              "id": "020fbf58-6f76-45b2-8a7d-40b675cd8c6b",
+              "name": "List of queried review statistics",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/review-statistics?from=<date>&to=<date>&user_agent=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "review-statistics"
+                  ],
+                  "query": [
+                    {
+                      "description": "All review statistics from this day",
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "All review statistics until this day, only works in conjunction with from parameter",
+                      "key": "to",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Review statistics requested with the specified User-Agent",
+                      "key": "user_agent",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total_reviews\": \"<integer>\",\n  \"total_reviews_deduplicated\": \"<integer>\",\n  \"successful_reviews\": \"<integer>\",\n  \"number_of_endpoints\": \"<integer>\",\n  \"must_violations\": \"<integer>\",\n  \"should_violations\": \"<integer>\",\n  \"may_violations\": \"<integer>\",\n  \"hint_violations\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T03:36:58.000Z",
+              "updatedAt": "2026-07-28T03:36:58.000Z",
+              "uid": "35240-020fbf58-6f76-45b2-8a7d-40b675cd8c6b"
+            },
+            {
+              "id": "b231f87f-8a5a-4797-8f62-6e690a0876bd",
+              "name": "One of the query parameters is incorrect",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/review-statistics?from=<date>&to=<date>&user_agent=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "review-statistics"
+                  ],
+                  "query": [
+                    {
+                      "description": "All review statistics from this day",
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "All review statistics until this day, only works in conjunction with from parameter",
+                      "key": "to",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Review statistics requested with the specified User-Agent",
+                      "key": "user_agent",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference https://opensource.zalando.com/problem/schema.yaml#/Problem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-07-28T03:36:58.000Z",
+              "updatedAt": "2026-07-28T03:36:58.000Z",
+              "uid": "35240-b231f87f-8a5a-4797-8f62-6e690a0876bd"
+            },
+            {
+              "id": "b4841072-c8d3-4b83-b32f-a9750422006b",
+              "name": "Error object",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/review-statistics?from=<date>&to=<date>&user_agent=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "review-statistics"
+                  ],
+                  "query": [
+                    {
+                      "description": "All review statistics from this day",
+                      "key": "from",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "All review statistics until this day, only works in conjunction with from parameter",
+                      "key": "to",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Review statistics requested with the specified User-Agent",
+                      "key": "user_agent",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": \"reference https://opensource.zalando.com/problem/schema.yaml#/Problem not found in the OpenAPI spec\"\n}",
+              "createdAt": "2026-07-28T03:36:58.000Z",
+              "updatedAt": "2026-07-28T03:36:58.000Z",
+              "uid": "35240-b4841072-c8d3-4b83-b32f-a9750422006b"
+            }
+          ],
+          "createdAt": "2026-07-28T03:36:58.000Z",
+          "updatedAt": "2026-07-28T03:36:58.000Z",
+          "uid": "35240-069fad62-4152-4719-87b2-a75bc83e07f0"
+        }
+      ],
+      "id": "da0ca93a-44b6-404d-aeb2-b3497a3cf002",
+      "createdAt": "2026-07-28T03:36:58.000Z",
+      "updatedAt": "2026-07-28T03:36:58.000Z",
+      "uid": "35240-da0ca93a-44b6-404d-aeb2-b3497a3cf002"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://zally.on.inter.net"
+    }
+  ]
+}
