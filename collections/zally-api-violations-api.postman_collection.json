@@ -1,0 +1,455 @@
+{
+  "item": [
+    {
+      "id": "46f9c7fb-243a-4149-90d8-6970e6d8aa4a",
+      "name": "Api Violations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47897b3e-797d-4274-a5b0-8422e995c3d3",
+          "name": "Zally API Violations",
+          "request": {
+            "name": "Zally API Violations",
+            "description": {
+              "content": "The API Violations endpoint validates given Swagger Specification\nagainst the rules defined in *Zalando* RESTful API Guidelines\n(http://zalando.github.io/restful-api-guidelines/).\n\nA successful response includes the list of violations grouped by\nthe API Guidelines rules.\n\nIf an api definition is supplied via url then any non-successful\nresponses from that will be passed on. For example you may be\nusing Zally without authentication but supply a password\nprotected url and still get a `401 Unauthorized` response.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api-violations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_definition\": \"<object>\",\n  \"api_definition_string\": \"<string>\",\n  \"api_definition_url\": \"<string>\",\n  \"ignore_rules\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18a304cb-17e4-4663-ad4b-1da2fe78bcdd",
+              "name": "API swagger is OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-violations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_definition\": {},\n  \"api_definition_string\": \"example-value\",\n  \"api_definition_url\": \"https://example.com/path/abc123\",\n  \"ignore_rules\": [\n    \"example-value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The URI where the validation result can be rerequested.",
+                  "key": "Location",
+                  "value": "http://mesCcgdJnfaESrmGozsjykmTzd.nlaxN8-2CZHIAXzWqqYDkOwTCUK-IvJ4R7F4VJZlCNKokLXHTt"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"violations\": [\n    {}\n  ],\n  \"message\": \"Example description for this resource.\",\n  \"violations_count\": {\n    \"must\": {},\n    \"should\": {},\n    \"may\": {},\n    \"could\": {},\n    \"hint\": {}\n  },\n  \"api_definition\": \"example-value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7178446b-76e5-4ac2-ac4e-ae1e5f28aa00",
+              "name": "Input file not parsable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-violations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_definition\": {},\n  \"api_definition_string\": \"example-value\",\n  \"api_definition_url\": \"https://example.com/path/abc123\",\n  \"ignore_rules\": [\n    \"example-value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "\"example-value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3923cb69-f919-41bc-8295-29691647b8da",
+              "name": "Error object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-violations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"api_definition\": {},\n  \"api_definition_string\": \"example-value\",\n  \"api_definition_url\": \"https://example.com/path/abc123\",\n  \"ignore_rules\": [\n    \"example-value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "\"example-value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed5ae05d-04ef-4f2b-8cb1-1d202c4f51ac",
+          "name": "Zally Get Previous Generated Validation Result",
+          "request": {
+            "name": "Zally Get Previous Generated Validation Result",
+            "description": {
+              "content": "Retreive a previous validation result in the same format as when\nit was originally processed.\n\nIf the idenfied validation result cannot be found then a\n`404 Not Found` response is returned.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api-violations",
+                ":externalId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "externalId",
+                  "description": "(Required) Identifier of a previous validation result"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1d537187-d3df-43f6-8164-9562558bb720",
+              "name": "API swagger is OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-violations",
+                    ":externalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "externalId",
+                      "description": "(Required) Identifier of a previous validation result"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"violations\": [\n    {}\n  ],\n  \"message\": \"Example description for this resource.\",\n  \"violations_count\": {\n    \"must\": {},\n    \"should\": {},\n    \"may\": {},\n    \"could\": {},\n    \"hint\": {}\n  },\n  \"api_definition\": \"example-value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d23410b3-3a5e-42de-8ebe-90910766c013",
+              "name": "No such API review",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-violations",
+                    ":externalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "externalId",
+                      "description": "(Required) Identifier of a previous validation result"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "\"example-value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3a06e0c-37eb-4786-a481-40bf2162d3a2",
+              "name": "Error object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-violations",
+                    ":externalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "externalId",
+                      "description": "(Required) Identifier of a previous validation result"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "\"example-value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://zally.on.inter.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "97b86a6f-380a-473b-9489-257494adbae0",
+    "name": "Zally - Zalando's API Linter Api Violations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Zally is a quality assurance tool. It's main purpose is to check the complience of\nAPI specifications to a specific set of API design rules.\n\nThe service is able to lint the API specification in OpenAPI format. The result of\nthe linting is a set of Violations. A violation contains information about the violated\nrule, its severity, and path of the violation in the specification document.\n\nThe API also provides a result and statistics endpoint. It contains aggregated statics like\nthe number of linting requests and the number of checked endpoints. Additionally, all\nlinting results and the linted API specifications can be retrieved.\n\n\nContact Support:\n Name: Team API Management\n Email: team-api-management@zalando.de",
+      "type": "text/plain"
+    }
+  }
+}

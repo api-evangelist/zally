@@ -1,0 +1,244 @@
+{
+  "item": [
+    {
+      "id": "434d63a4-d484-4a98-9ed5-b90ded52c289",
+      "name": "Supported Rules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af46209f-95f6-4337-b92b-e81a339b6f85",
+          "name": "Zally Suported Rules",
+          "request": {
+            "name": "Zally Suported Rules",
+            "description": {
+              "content": "Returns a list of rules which are supported by a current Zally\ninstallation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "supported-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Rules Type"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "Is Rule Active"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "769cb1d1-b8bb-4c80-b143-a0d93de18058",
+              "name": "List of supported rules is successfully returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "supported-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"supported_rules\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "938410a7-9055-4824-85e8-cf05745334fa",
+              "name": "One of the query parameters is incorrect",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "supported-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "\"example-value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d0e886d-5e58-4113-94a4-be200996f635",
+              "name": "Error object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "supported-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "\"example-value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://zally.on.inter.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "130f996b-d732-4079-9f0d-42ed2c4ff2b0",
+    "name": "Zally - Zalando's API Linter Api Violations Supported Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Zally is a quality assurance tool. It's main purpose is to check the complience of\nAPI specifications to a specific set of API design rules.\n\nThe service is able to lint the API specification in OpenAPI format. The result of\nthe linting is a set of Violations. A violation contains information about the violated\nrule, its severity, and path of the violation in the specification document.\n\nThe API also provides a result and statistics endpoint. It contains aggregated statics like\nthe number of linting requests and the number of checked endpoints. Additionally, all\nlinting results and the linted API specifications can be retrieved.\n\n\nContact Support:\n Name: Team API Management\n Email: team-api-management@zalando.de",
+      "type": "text/plain"
+    }
+  }
+}

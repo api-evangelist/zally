@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zally - Zalando's API Linter Api Violations API",
+    "version": "2.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Api Violations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zally API Violations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://zally.on.inter.net/api-violations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The API Violations endpoint validates given Swagger Specification\nagainst the rules defined in *Zalando* RESTful API Guidelines\n(http://zalando.github.io/restful-api-guidelines/).\n\nA successful response includes the list of violations grouped by\nthe API Guidelines rules.\n\nIf an api definition is supplied via url then any non-successful\nresponses from that will be passed on. For example you may be\nusing Zally without authentication but supply a password\nprotected url and still get a `401 Unauthor"
+        },
+        {
+          "info": {
+            "name": "Zally Get Previous Generated Validation Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://zally.on.inter.net/api-violations/:externalId",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of a previous validation result"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retreive a previous validation result in the same format as when\nit was originally processed.\n\nIf the idenfied validation result cannot be found then a\n`404 Not Found` response is returned.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zally - Zalando's API Linter Api Violations Supported Rules API",
+    "version": "2.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Supported Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zally Suported Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://zally.on.inter.net/supported-rules",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Rules Type"
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query",
+                "description": "Is Rule Active"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of rules which are supported by a current Zally\ninstallation.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
