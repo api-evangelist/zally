@@ -5,6 +5,19 @@ description: >-
   rule sets for API design consistency. It exposes a REST API, command-line interface, and web UI for checking API
   designs against Zalando's RESTful API Guidelines or custom rule sets.
 type: Index
+deliveryModel:
+  model: library
+  license: MIT License
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -117,6 +130,12 @@ apis:
   - type: Examples
     url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
 common:
+  - type: SecurityPolicy
+    url: https://github.com/zalando/zally/blob/main/SECURITY
+  - type: CodeOfConduct
+    url: https://github.com/zalando/.github/blob/master/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/zalando/zally/blob/main/CONTRIBUTING
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/zally/overview
   - type: AgenticAccess
