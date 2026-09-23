@@ -1,25 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Zally - Zalando's API Linter Api Violations API
-  description: 'Zally is a quality assurance tool. It''s main purpose is to check the complience of
-
-    API specifications to a specific set of API design rules.
-
-
-    The service is able to lint the API specification in OpenAPI format. The result of
-
-    the linting is a set of Violations. A violation contains information about the violated
-
-    rule, its severity, and path of the violation in the specification document.
-
-
-    The API also provides a result and statistics endpoint. It contains aggregated statics like
-
-    the number of linting requests and the number of checked endpoints. Additionally, all
-
-    linting results and the linted API specifications can be retrieved.
-
-    '
+  description: Zally is a quality assurance tool.
   version: 2.3.0
   x-api-id: 48aa0090-25ef-11e8-b467-0ed5f89f718b
   x-audience: company-internal
@@ -54,9 +36,7 @@ paths:
 
         using Zally without authentication but supply a password
 
-        protected url and still get a `401 Unauthorized` response.
-
-        '
+        protected url and still get a `401 Unauthorized` response.'
       requestBody:
         content:
           application/json:
@@ -130,6 +110,8 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Api Violations
+      operationId: postApiViolations
+      x-operation-id-source: derived
   /api-violations/{externalId}:
     get:
       summary: Zally Get Previous Generated Validation Result
@@ -140,9 +122,7 @@ paths:
 
         If the idenfied validation result cannot be found then a
 
-        `404 Not Found` response is returned.
-
-        '
+        `404 Not Found` response is returned.'
       parameters:
       - $ref: '#/components/parameters/ExternalId'
       responses:
@@ -197,16 +177,9 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Api Violations
+      operationId: getApiViolationsByExternalId
+      x-operation-id-source: derived
 components:
-  parameters:
-    ExternalId:
-      name: externalId
-      in: path
-      description: Identifier of a previous validation result
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
     RuleType:
       type: string
@@ -217,30 +190,6 @@ components:
       - MAY
       - HINT
       description: Rule type / severity
-    LintingResponse:
-      type: object
-      description: Linting Response
-      required:
-      - violations
-      - violations_count
-      properties:
-        violations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Violation'
-          description: List of violations
-          example:
-          - {}
-        message:
-          type: string
-          description: Custom server message
-          example: Example description for this resource.
-        violations_count:
-          $ref: '#/components/schemas/ViolationsCount'
-        api_definition:
-          type: string
-          description: Specification object in OpenAPI format
-          example: example-value
     Violation:
       type: object
       description: Violation Object
@@ -285,6 +234,30 @@ components:
           format: int32
           example: 5
           description: The line ending the violated location, if known
+    LintingResponse:
+      type: object
+      description: Linting Response
+      required:
+      - violations
+      - violations_count
+      properties:
+        violations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Violation'
+          description: List of violations
+          example:
+          - {}
+        message:
+          type: string
+          description: Custom server message
+          example: Example description for this resource.
+        violations_count:
+          $ref: '#/components/schemas/ViolationsCount'
+        api_definition:
+          type: string
+          description: Specification object in OpenAPI format
+          example: example-value
     LintingRequest:
       type: object
       description: 'Request containing a swagger definition file. One of the following fields must be provided:
@@ -342,6 +315,15 @@ components:
           type: integer
           format: int32
           example: 100
+  parameters:
+    ExternalId:
+      name: externalId
+      in: path
+      description: Identifier of a previous validation result
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     BearerAuth:
       type: http

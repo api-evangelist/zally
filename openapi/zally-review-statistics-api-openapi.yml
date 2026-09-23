@@ -1,25 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Zally - Zalando's API Linter Api Violations Review Statistics API
-  description: 'Zally is a quality assurance tool. It''s main purpose is to check the complience of
-
-    API specifications to a specific set of API design rules.
-
-
-    The service is able to lint the API specification in OpenAPI format. The result of
-
-    the linting is a set of Violations. A violation contains information about the violated
-
-    rule, its severity, and path of the violation in the specification document.
-
-
-    The API also provides a result and statistics endpoint. It contains aggregated statics like
-
-    the number of linting requests and the number of checked endpoints. Additionally, all
-
-    linting results and the linted API specifications can be retrieved.
-
-    '
+  title: Zally - Zalando's API Linter Review Statistics API
+  description: Zally is a quality assurance tool.
   version: 2.3.0
   x-api-id: 48aa0090-25ef-11e8-b467-0ed5f89f718b
   x-audience: company-internal
@@ -35,14 +17,12 @@ tags:
 paths:
   /review-statistics:
     get:
-      summary: Zally Provides Query Capabilites for Linting Summaries and Automatically Computed Review Statistics.
+      summary: Zally Provides Query Capabilites for Linting Summaries and Automatically…
       description: 'Returns a list of all linting results and review statistics for a given
 
         interval in time. If none of the query parameters is supplied, a list of
 
-        all linting results and review statistics for the last week is returned.
-
-        '
+        all linting results and review statistics for the last week is returned.'
       parameters:
       - $ref: '#/components/parameters/From'
       - $ref: '#/components/parameters/To'
@@ -97,6 +77,8 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Review Statistics
+      operationId: getReviewStatistics
+      x-operation-id-source: derived
 components:
   schemas:
     ReviewStatisticsResponse:
@@ -160,18 +142,18 @@ components:
       required: false
       schema:
         type: string
-    To:
-      name: to
-      in: query
-      description: All review statistics until this day, only works in conjunction with from parameter
-      required: false
-      schema:
-        type: string
-        format: date
     From:
       name: from
       in: query
       description: All review statistics from this day
+      required: false
+      schema:
+        type: string
+        format: date
+    To:
+      name: to
+      in: query
+      description: All review statistics until this day, only works in conjunction with from parameter
       required: false
       schema:
         type: string

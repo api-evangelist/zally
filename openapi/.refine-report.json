@@ -1,9 +1,7 @@
 {
   "provider": "zally",
   "sources": [
-    "zally-api-violations-api-openapi.yml",
-    "zally-review-statistics-api-openapi.yml",
-    "zally-supported-rules-api-openapi.yml"
+    "_original/zally-api.yml"
   ],
   "outputs": [
     "zally-api-violations-api-openapi.yml",
@@ -13,6 +11,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "zally-api.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "zally-api.yml: tagged paths POST /api-violations -> Api Violations",
+    "zally-api.yml: tagged paths GET /api-violations/{externalId} -> Api Violations",
+    "zally-api.yml: tagged paths GET /supported-rules -> Supported Rules",
+    "zally-api.yml: tagged paths GET /review-statistics -> Review Statistics",
+    "zally-api.yml: declared missing tag: Api Violations",
+    "zally-api.yml: declared missing tag: Review Statistics",
+    "zally-api.yml: declared missing tag: Supported Rules",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "zally-api-violations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zally-review-statistics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zally-supported-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
