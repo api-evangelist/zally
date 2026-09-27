@@ -37,7 +37,7 @@ tags:
   - API Design
   - API Linting
   - API Quality
-  - Open-Source
+  - Open Source
   - OpenAPI
   - Zalando
 tags_raw:
@@ -47,6 +47,7 @@ tags_raw:
   - Open Source
   - OpenAPI
   - Zalando
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/apis.yml
 created: '2026-03-25'
 modified: '2026-05-19'

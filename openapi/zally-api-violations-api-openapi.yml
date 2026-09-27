@@ -180,16 +180,43 @@ paths:
       operationId: getApiViolationsByExternalId
       x-operation-id-source: derived
 components:
+  parameters:
+    ExternalId:
+      name: externalId
+      in: path
+      description: Identifier of a previous validation result
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
-    RuleType:
-      type: string
-      x-extensible-enum:
-      - MUST
-      - SHOULD
-      - COULD
-      - MAY
-      - HINT
-      description: Rule type / severity
+    LintingRequest:
+      type: object
+      description: 'Request containing a swagger definition file. One of the following fields must be provided:
+
+        api_definition, api_definition_string, or api_definition_url.
+
+        '
+      properties:
+        api_definition:
+          type: object
+          description: Specification object in OpenAPI format
+          example: {}
+        api_definition_string:
+          type: string
+          description: Raw API Specification string in OpenAPI format
+          example: example-value
+        api_definition_url:
+          type: string
+          description: Link to the specification in OpenAPI format
+          example: https://example.com/path/abc123
+        ignore_rules:
+          type: array
+          items:
+            type: string
+          description: List of rule ids to be ignored
+          example:
+          - example-value
     Violation:
       type: object
       description: Violation Object
@@ -234,6 +261,15 @@ components:
           format: int32
           example: 5
           description: The line ending the violated location, if known
+    RuleType:
+      type: string
+      x-extensible-enum:
+      - MUST
+      - SHOULD
+      - COULD
+      - MAY
+      - HINT
+      description: Rule type / severity
     LintingResponse:
       type: object
       description: Linting Response
@@ -258,33 +294,6 @@ components:
           type: string
           description: Specification object in OpenAPI format
           example: example-value
-    LintingRequest:
-      type: object
-      description: 'Request containing a swagger definition file. One of the following fields must be provided:
-
-        api_definition, api_definition_string, or api_definition_url.
-
-        '
-      properties:
-        api_definition:
-          type: object
-          description: Specification object in OpenAPI format
-          example: {}
-        api_definition_string:
-          type: string
-          description: Raw API Specification string in OpenAPI format
-          example: example-value
-        api_definition_url:
-          type: string
-          description: Link to the specification in OpenAPI format
-          example: https://example.com/path/abc123
-        ignore_rules:
-          type: array
-          items:
-            type: string
-          description: List of rule ids to be ignored
-          example:
-          - example-value
     ViolationsCount:
       type: object
       description: Violation Count
@@ -315,15 +324,6 @@ components:
           type: integer
           format: int32
           example: 100
-  parameters:
-    ExternalId:
-      name: externalId
-      in: path
-      description: Identifier of a previous validation result
-      required: true
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     BearerAuth:
       type: http

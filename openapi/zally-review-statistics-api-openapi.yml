@@ -142,18 +142,18 @@ components:
       required: false
       schema:
         type: string
-    From:
-      name: from
-      in: query
-      description: All review statistics from this day
-      required: false
-      schema:
-        type: string
-        format: date
     To:
       name: to
       in: query
       description: All review statistics until this day, only works in conjunction with from parameter
+      required: false
+      schema:
+        type: string
+        format: date
+    From:
+      name: from
+      in: query
+      description: All review statistics from this day
       required: false
       schema:
         type: string

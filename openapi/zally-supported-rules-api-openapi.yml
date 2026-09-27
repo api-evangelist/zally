@@ -72,15 +72,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RuleType:
-      type: string
-      x-extensible-enum:
-      - MUST
-      - SHOULD
-      - COULD
-      - MAY
-      - HINT
-      description: Rule type / severity
     Rule:
       type: object
       description: Rule
@@ -121,7 +112,23 @@ components:
             $ref: '#/components/schemas/Rule'
           example:
           - {}
+    RuleType:
+      type: string
+      x-extensible-enum:
+      - MUST
+      - SHOULD
+      - COULD
+      - MAY
+      - HINT
+      description: Rule type / severity
   parameters:
+    IsActive:
+      name: is_active
+      in: query
+      description: Is Rule Active
+      required: false
+      schema:
+        type: boolean
     RulesType:
       name: type
       in: query
@@ -135,13 +142,6 @@ components:
         - COULD
         - MAY
         - HINT
-    IsActive:
-      name: is_active
-      in: query
-      description: Is Rule Active
-      required: false
-      schema:
-        type: boolean
   securitySchemes:
     BearerAuth:
       type: http
