@@ -180,15 +180,6 @@ paths:
       operationId: getApiViolationsByExternalId
       x-operation-id-source: derived
 components:
-  parameters:
-    ExternalId:
-      name: externalId
-      in: path
-      description: Identifier of a previous validation result
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
     LintingRequest:
       type: object
@@ -217,6 +208,60 @@ components:
           description: List of rule ids to be ignored
           example:
           - example-value
+    ViolationsCount:
+      type: object
+      description: Violation Count
+      required:
+      - must
+      - should
+      - may
+      - could
+      - hint
+      properties:
+        must:
+          type: integer
+          format: int32
+          example: 100
+        should:
+          type: integer
+          format: int32
+          example: 100
+        may:
+          type: integer
+          format: int32
+          example: 100
+        could:
+          type: integer
+          format: int32
+          example: 100
+        hint:
+          type: integer
+          format: int32
+          example: 100
+    LintingResponse:
+      type: object
+      description: Linting Response
+      required:
+      - violations
+      - violations_count
+      properties:
+        violations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Violation'
+          description: List of violations
+          example:
+          - {}
+        message:
+          type: string
+          description: Custom server message
+          example: Example description for this resource.
+        violations_count:
+          $ref: '#/components/schemas/ViolationsCount'
+        api_definition:
+          type: string
+          description: Specification object in OpenAPI format
+          example: example-value
     Violation:
       type: object
       description: Violation Object
@@ -270,60 +315,15 @@ components:
       - MAY
       - HINT
       description: Rule type / severity
-    LintingResponse:
-      type: object
-      description: Linting Response
-      required:
-      - violations
-      - violations_count
-      properties:
-        violations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Violation'
-          description: List of violations
-          example:
-          - {}
-        message:
-          type: string
-          description: Custom server message
-          example: Example description for this resource.
-        violations_count:
-          $ref: '#/components/schemas/ViolationsCount'
-        api_definition:
-          type: string
-          description: Specification object in OpenAPI format
-          example: example-value
-    ViolationsCount:
-      type: object
-      description: Violation Count
-      required:
-      - must
-      - should
-      - may
-      - could
-      - hint
-      properties:
-        must:
-          type: integer
-          format: int32
-          example: 100
-        should:
-          type: integer
-          format: int32
-          example: 100
-        may:
-          type: integer
-          format: int32
-          example: 100
-        could:
-          type: integer
-          format: int32
-          example: 100
-        hint:
-          type: integer
-          format: int32
-          example: 100
+  parameters:
+    ExternalId:
+      name: externalId
+      in: path
+      description: Identifier of a previous validation result
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     BearerAuth:
       type: http

@@ -80,6 +80,30 @@ paths:
       operationId: getReviewStatistics
       x-operation-id-source: derived
 components:
+  parameters:
+    From:
+      name: from
+      in: query
+      description: All review statistics from this day
+      required: false
+      schema:
+        type: string
+        format: date
+    To:
+      name: to
+      in: query
+      description: All review statistics until this day, only works in conjunction with from parameter
+      required: false
+      schema:
+        type: string
+        format: date
+    UserAgent:
+      name: user_agent
+      in: query
+      description: Review statistics requested with the specified User-Agent
+      required: false
+      schema:
+        type: string
   schemas:
     ReviewStatisticsResponse:
       type: object
@@ -134,30 +158,6 @@ components:
           format: int32
           example: 5
           description: Number of HINTS
-  parameters:
-    UserAgent:
-      name: user_agent
-      in: query
-      description: Review statistics requested with the specified User-Agent
-      required: false
-      schema:
-        type: string
-    To:
-      name: to
-      in: query
-      description: All review statistics until this day, only works in conjunction with from parameter
-      required: false
-      schema:
-        type: string
-        format: date
-    From:
-      name: from
-      in: query
-      description: All review statistics from this day
-      required: false
-      schema:
-        type: string
-        format: date
   securitySchemes:
     BearerAuth:
       type: http
