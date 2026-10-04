@@ -1,0 +1,26 @@
+slug: zally
+provider: Zally
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Api Violations
+  spec_file: zally-api-violations-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.75
+  evidence: POST /api-violations  postApiViolations  Zally API Violations; 'Zally is a quality assurance
+    tool.'
+  reason: Lints OpenAPI specs against design guidelines and reports violations — automated quality checking
+    of API design artefacts in the engineering workflow. Could also be read as public API lifecycle governance,
+    hence 0.75.

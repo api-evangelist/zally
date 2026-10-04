@@ -132,6 +132,9 @@ apis:
   - type: Examples
     url: https://raw.githubusercontent.com/api-evangelist/zally/refs/heads/main/examples/
 common:
+  - type: CapabilityMap
+    url: capabilities/zally-capability-edges.yml
+    name: Zally Business Capability Map
   - type: SecurityPolicy
     url: https://github.com/zalando/zally/blob/main/SECURITY
   - type: CodeOfConduct
