@@ -72,6 +72,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    SupportedRulesResponse:
+      type: object
+      description: Supported Rules
+      required:
+      - supported_rules
+      properties:
+        supported_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rule'
+          example:
+          - {}
     Rule:
       type: object
       description: Rule
@@ -100,18 +112,6 @@ components:
           type: boolean
           description: Shows whether the rule is activated
           example: true
-    SupportedRulesResponse:
-      type: object
-      description: Supported Rules
-      required:
-      - supported_rules
-      properties:
-        supported_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rule'
-          example:
-          - {}
     RuleType:
       type: string
       x-extensible-enum:

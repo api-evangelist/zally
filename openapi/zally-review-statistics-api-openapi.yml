@@ -81,14 +81,13 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    From:
-      name: from
+    UserAgent:
+      name: user_agent
       in: query
-      description: All review statistics from this day
+      description: Review statistics requested with the specified User-Agent
       required: false
       schema:
         type: string
-        format: date
     To:
       name: to
       in: query
@@ -97,13 +96,14 @@ components:
       schema:
         type: string
         format: date
-    UserAgent:
-      name: user_agent
+    From:
+      name: from
       in: query
-      description: Review statistics requested with the specified User-Agent
+      description: All review statistics from this day
       required: false
       schema:
         type: string
+        format: date
   schemas:
     ReviewStatisticsResponse:
       type: object
